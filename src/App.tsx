@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import { Header } from './Components/Page Header/Header';
+import { ErrorPage } from './Components/Error Page/ErrorPage'
 import { AllNews } from './Components/All News/AllNews';
 import { StockMarketNewsPage } from './Components/StockMarketNewsPage/StockMarketNewsPage'
 import { NewsPage } from './Components/News Page/NewsPage';
@@ -17,7 +18,7 @@ function App() {
     {
       path: "/",
       element: <Header environment={environment} setEnvironment={setEnvironment}/>,
-      // errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
         path: '/',
