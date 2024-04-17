@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyledAllNews } from "./AllNews.Style";
 import { useAppDispatch, useAppSelector } from "../../Store/Store";
 import { NewsWindow } from "./NewsWindow";
+import { thankaddItNews } from "../../Store/Slice/ItNewsSlice"
 
 export const AllNews = () => {
   const dispatch = useAppDispatch();

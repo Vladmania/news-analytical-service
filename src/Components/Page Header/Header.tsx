@@ -4,11 +4,10 @@ import { StyledHeader, StyledFooter } from "./Styled.Header";
 
 interface IHeader {
   environment: boolean;
-  setEnvironment: (type: boolean) => void
+  setEnvironment: (type: boolean) => void;
 }
 
 export const Header = (props: IHeader) => {
-  
   return (
     <>
       <StyledHeader>
@@ -16,7 +15,14 @@ export const Header = (props: IHeader) => {
         <div>
           <Link to="/">ит-новости</Link>
           <Link to="/fin-news">фондовый рынок</Link>
-          <input type="checkbox" onClick={() => props.environment ? props.setEnvironment(false) : props.setEnvironment(true)}/>
+          <input
+            type="checkbox"
+            onClick={() =>
+              props.environment
+                ? props.setEnvironment(false)
+                : props.setEnvironment(true)
+            }
+          />
         </div>
       </StyledHeader>
       <div>

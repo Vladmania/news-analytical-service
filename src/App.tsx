@@ -4,12 +4,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { useState } from "react";
+import { StyledApp } from './App.Style'
 import { Header } from './Components/Page Header/Header';
 import { ErrorPage } from './Components/Error Page/ErrorPage'
 import { AllNews } from './Components/All News/AllNews';
 import { StockMarketNewsPage } from './Components/StockMarketNewsPage/StockMarketNewsPage'
 import { NewsPage } from './Components/News Page/NewsPage';
-import { StyledApp } from './App.Style'
+import { AddingItNews } from './Components/Admin panel/AddingITNews';
+
 
 function App() {
   const[environment, setEnvironment] = useState(true)
@@ -31,6 +33,10 @@ function App() {
       {
         path: '/news/:newsid',
         element: <NewsPage />,
+      },
+      {
+        path: '/admin',
+        element: <AddingItNews />,
       },
       
     ]

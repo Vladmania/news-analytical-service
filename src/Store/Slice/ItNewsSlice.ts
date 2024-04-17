@@ -73,7 +73,7 @@ export const thankaddItNews = createAsyncThunk<any>(
   async () => {
     try {
       const respons = await getItNews();
-      return respons.data.articles;
+       return console.log(respons.data);
     } catch (e) {
       console.log();
     }
