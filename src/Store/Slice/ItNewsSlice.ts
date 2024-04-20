@@ -1,46 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getItNews } from "../../Api/ServerRequests";
+import { getStockMarketNews } from "../../Api/ServerRequests";
+import { collection_of_pictures } from "../../Cover_News/PicturesforFinancialNews";
 
 interface INews {
-    id: number,
-    picture: string,
-    date: string,
-    title: string
+  id: number;
+  title: string;
+  news_text: string;
+  cover: string;
+  source: string;
+  publication_date: string;
 }
 
 interface IinitialState {
-    status: string,
-    totalResults: number,
-    articles: INews[],
-    loading: boolean,
-    error: boolean
+  status: string;
+  totalResults: number;
+  articles: INews[];
+  loading: boolean;
+  error: boolean;
 }
 const initialState: IinitialState = {
-    status: "",
-    totalResults: 0,
-    articles: [{id: 1, picture: "https://astera.ru/wp-content/uploads/2022/01/apple-store-city.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 2, picture: "https://all-aforizmy.ru/wp-content/uploads/2023/02/apple.jpg", 
-    date: "01.04.2024",
-    title: "Здесь реклама"},{id: 3, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 4, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 5, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 6, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 7, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},{id: 8, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Apple начала собирать в Бразилии базовую модель линейки iPhone 15"},
-  {id: 8, picture: "https://u2.9111s.ru/uploads/202303/29/c00d4fe323d16602737ce8219b49985f.jpg", 
-    date: "01.04.2024",
-    title: "Место для вашей рекламы"},],
-    loading: false,
-    error: false
+  status: "",
+  totalResults: 0,
+  articles: [],
+  loading: false,
+  error: false,
 };
 
 export const itNewsSlice = createSlice({
@@ -68,14 +52,23 @@ export const itNewsSlice = createSlice({
 
 export const { addItNewsState } = itNewsSlice.actions;
 
-export const thankaddItNews = createAsyncThunk<any>(
+export const thankaddItNews = createAsyncThunk<INews[]>(
   "itnews/thankgetItNews",
   async () => {
     try {
-      const respons = await getItNews();
-       return console.log(respons.data);
+      const respons = await getStockMarketNews();
+      const objnews = respons.data.sitenews.data.map((e: INews[], i: number) => {
+          return {
+            id: e[0],
+            title: e[2],
+            cover: collection_of_pictures[i],
+            publication_date: e[3],
+          };
+        }
+      );
+      return objnews;
     } catch (e) {
-      console.log();
+      console.log(e);
     }
   }
 );

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { StyledHeader, StyledFooter } from "./Styled.Header";
 
@@ -31,7 +30,7 @@ export const Header = (props: IHeader) => {
       <StyledFooter>
         <div className="footer__info">
           <h1>itrend.pro</h1>
-          <p>Рассказываем о важных событиях  в мире технологий и финансов</p>
+          <p>Рассказываем о важных событиях в мире технологий и финансов</p>
         </div>
         <div className="footer__link">
           <h2>Новости</h2>

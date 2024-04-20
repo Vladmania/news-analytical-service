@@ -23,7 +23,6 @@ export const StyledHeader = styled.div`
         font-size: 16px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-decoration: none;
-        color: black;
     }
     input[type="checkbox"] {
         position: relative;

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { StyledNewsWindow } from "./AllNews.Style";
-import { useState } from "react";
 
 interface IitNews {
-  picture: string;
-  date: string;
+  id: number;
   title: string;
+  cover: string;
+  date: string;
   serialNumber: number;
 }
 
@@ -34,18 +34,18 @@ export const NewsWindow = (props: IitNews) => {
 
   return (
     <StyledNewsWindow
-      $pictureBackground={props.picture}
+      $pictureBackground={props.cover}
       $startgrid={start}
       $endgrid={end}
       $size={props.serialNumber}
     >
-      <Link to={"/news/1"}>
-      <div className="it_News_plast">
-        <div className="it_News">
-          <p>{props.title}</p>
-          <p className="it_News__p__date">новость: {props.date}</p>
+      <Link to={`/news/${props.id}`}>
+        <div className="it_News_plast">
+          <div className="it_News">
+            <p>{props.title}</p>
+            <p className="it_News__p__date">новость: {props.date}</p>
+          </div>
         </div>
-      </div>
       </Link>
     </StyledNewsWindow>
   );
