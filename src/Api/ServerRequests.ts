@@ -9,9 +9,9 @@ export const getStockMarketNews = () => {
     );
   };
   
-  export const getTheArticle = () => {
+  export const getTheArticle = (id: number) => {
     return axios.get(
-        silka 
+        silka +`/${String(id)}` + ".json"
     );
   };
 

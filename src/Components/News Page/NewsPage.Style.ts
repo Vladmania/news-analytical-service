@@ -6,6 +6,10 @@ export const StyledNewsPage = styled.div`
     max-width: 1240px;
     margin: 0 auto;
     font-family: 'Montserrat';
+    td{
+        border: 1px black solid;
+        padding: 5px 10px;
+    }
     img{
         border-radius: 21px;
     box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.6);

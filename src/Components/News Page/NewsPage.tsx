@@ -1,18 +1,35 @@
+import { useParams } from 'react-router-dom'
+import { useEffect,useState } from 'react'
+import { useAppDispatch, useAppSelector } from "../../Store/Store";
 import {StyledNewsPage} from "./NewsPage.Style"
+import { thankgetTheArticle } from "../../Store/Slice/ItNewsSlice"
+
 
 export const NewsPage = () =>{
+    const news = useAppSelector((state) => state.itnews.articles);
+    const dispatch = useAppDispatch()
+    const param = useParams()
+    const [isRegistered, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    const loadingData = async () => {
+      await dispatch(thankgetTheArticle(Number(param.newsid)));
+      setIsAuth(true);
+    };
+    loadingData();
+  }, [dispatch, param.newsid]);
+
+  if (!isRegistered) {
+    return <div>Загрузка</div>;
+  }
+    
     return(
         <StyledNewsPage>
-        <h1>Apple начала собирать в Бразилии базовую модель линейки iPhone 15</h1>
-        <p>новость: 13.03.2023</p>
-        <img src="https://astera.ru/wp-content/uploads/2022/01/apple-store-city.jpg"></img>
-        <p className="news__description__p">О начале сборки iPhone 15 сообщил бразильский портал MacMagazine. Apple не подтвердила эту информацию на своём сайте. Однако интернет-магазин компании в Бразилии даёт покупателям возможность проверить, какую модель они приобретают.
-На это указывают URL-адреса страницы оформления заказа iPhone 15. Покупатели могут увидеть номер изделия, заканчивающийся на «BR/A», который используется для идентификации продукции, собранной в Бразилии. Большинство товаров имеют маркировку «BE/A» или «BZ/A», указывающие на то, что продукция импортирована для продажи в Бразилии.
-Как было с предыдущими итерациями iPhone, Apple решила производить в латиноамериканской стране именно базовую модель. Все iPhone 15 Plus, iPhone 15 Pro и iPhone 15 Pro Max, продаваемые в Бразилии, импортированы из других стран.
-Страна повысила налоги на ввозимые товары, поэтому некоторые компании инвестировали в сборку своей продукции в Бразилии, что обеспечивает снижение налоговой нагрузки на продажу устройств. На старте продаж iPhone 15 с 128 ГБ стоил в Бразилии около $1,46 тыс., однако сейчас модель можно найти за $1,08 тыс. в некоторых розничных магазинах.
-В последние годы Apple стремится диверсифицировать производство iPhone и другой своей продукции за пределами Китая. Наличие сборочных мощностей в других регионах может помочь компании избежать проблем с поставками на местные рынки и снизить зависимость от КНР.
-Помимо Бразилии, Apple также наладила производство гаджетов в Индии и Вьетнаме. Корпорация впервые запустила выпуск iPhone 15 на заводах в Индии одновременно с китайскими предприятиями.</p>
-        <p>Источник: Хабр.ру</p>
+        <h1 dangerouslySetInnerHTML={{__html: news[0].title}}></h1>
+        <p>новость: {news[0].publication_date}</p>
+        <img src={news[0].cover}></img>
+        <p dangerouslySetInnerHTML={{__html: news[0].news_text}}></p>
+        <p>Источник: </p>
         <p>Другие новости</p>
         </StyledNewsPage>
     )

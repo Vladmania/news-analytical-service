@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../Store/Store";
 import { StyledNewsWindow } from "./AllNews.Style";
+import { thankgetTheArticle } from "../../Store/Slice/ItNewsSlice"
 
 interface IitNews {
   id: number;
@@ -10,6 +12,7 @@ interface IitNews {
 }
 
 export const NewsWindow = (props: IitNews) => {
+  const dispatch = useAppDispatch();
   let [start, end] = [0, 0];
 
   if (props.serialNumber === 0 || props.serialNumber === 8) {
@@ -39,10 +42,10 @@ export const NewsWindow = (props: IitNews) => {
       $endgrid={end}
       $size={props.serialNumber}
     >
-      <Link to={`/news/${props.id}`}>
+      <Link to={`/news/${props.id}`} >
         <div className="it_News_plast">
           <div className="it_News">
-            <p>{props.title}</p>
+            <p dangerouslySetInnerHTML={{__html: props.title}}></p>
             <p className="it_News__p__date">новость: {props.date}</p>
           </div>
         </div>

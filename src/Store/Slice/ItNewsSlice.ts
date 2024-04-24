@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getStockMarketNews } from "../../Api/ServerRequests";
+import { getTheArticle } from "../../Api/ServerRequests"
 import { collection_of_pictures } from "../../Cover_News/PicturesforFinancialNews";
 
 interface INews {
@@ -47,6 +48,17 @@ export const itNewsSlice = createSlice({
       state.error = true;
       state.loading = false;
     });
+    builder.addCase(thankgetTheArticle.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(thankgetTheArticle.fulfilled, (state, actions) => {
+      state.articles = [...actions.payload];
+      state.loading = false;
+    });
+    builder.addCase(thankgetTheArticle.rejected, (state) => {
+      state.error = true;
+      state.loading = false;
+    });
   },
 });
 
@@ -63,6 +75,29 @@ export const thankaddItNews = createAsyncThunk<INews[]>(
             title: e[2],
             cover: collection_of_pictures[i],
             publication_date: e[3],
+          };
+        }
+      );
+      return objnews;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const thankgetTheArticle = createAsyncThunk<INews[], number>(
+  "itnews/thankgetTheArticle",
+  async (id) => {
+    try {
+      const respons = await getTheArticle(id);
+      console.log(respons.data.content.data);
+      const objnews = respons.data.content.data.map((e: INews[], i: number) => {
+          return {
+            id: e[0],
+            title: e[1],
+            news_text: e[3],
+            cover: collection_of_pictures[i],
+            publication_date: e[2],
           };
         }
       );
