@@ -1,17 +1,22 @@
 import axios from "axios";
 
-const silka = "https://iss.moex.com/iss/sitenews"
-
+const linkStockMarketNews = "https://iss.moex.com/iss/sitenews"
+const linkShares = "https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?iss.meta=off&iss.only=marketdata&marketdata.columns=SECID,LAST,LASTTOPREVPRICE,CHANGE"
 
 export const getStockMarketNews = () => {
     return axios.get(
-        silka + ".json"
+        linkStockMarketNews + ".json"
     );
   };
   
   export const getTheArticle = (id: number) => {
     return axios.get(
-        silka +`/${String(id)}` + ".json"
+        linkStockMarketNews +`/${String(id)}` + ".json"
     );
   };
 
+  export const getShares = () => {
+    return axios.get(
+      linkShares
+    )
+  }

@@ -43,7 +43,7 @@ export const StockMarketNewsPageStyled = styled.div`
   .StockMarket_allParticipantY {
     display: flex;
     width: 100%;
-    transition: transform .5s ease-out;
+   
     animation: stockY 20s linear infinite;
     animation-iteration-count: infinite;
     animation-play-state: running;
@@ -55,7 +55,7 @@ export const StockMarketNewsPageStyled = styled.div`
     animation: stockX 20s linear infinite;
     animation-iteration-count: infinite;
     animation-play-state: running;
-    animation-duration: 300s;
+    animation-duration: 900s;
     color: black;
     }
   @keyframes stockX {

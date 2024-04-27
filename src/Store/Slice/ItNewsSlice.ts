@@ -73,7 +73,7 @@ export const thankaddItNews = createAsyncThunk<INews[]>(
           return {
             id: e[0],
             title: e[2],
-            cover: collection_of_pictures[i],
+            cover: collection_of_pictures[Math.floor(Math.random() * 25)],
             publication_date: e[3],
           };
         }
@@ -96,7 +96,7 @@ export const thankgetTheArticle = createAsyncThunk<INews[], number>(
             id: e[0],
             title: e[1],
             news_text: e[3],
-            cover: collection_of_pictures[i],
+            cover: collection_of_pictures[Math.floor(Math.random() * 6)],
             publication_date: e[2],
           };
         }
