@@ -2,15 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getStockMarketNews } from "../../Api/ServerRequests";
 import { getTheArticle } from "../../Api/ServerRequests"
+import { getAllNews } from "../../Api/ServerRequests"
+import { getOneNews } from "../../Api/ServerRequests"
 import { collection_of_pictures } from "../../Cover_News/PicturesforFinancialNews";
 
 interface INews {
   id: number;
-  title: string;
-  news_text: string;
-  cover: string;
-  source: string;
-  publication_date: string;
+  titleNews: string;
+  newsText: string;
+  coverNews: string;
+  soureNews: string;
+  dateNews: string;
 }
 
 interface IinitialState {
@@ -20,6 +22,7 @@ interface IinitialState {
   loading: boolean;
   error: boolean;
 }
+
 const initialState: IinitialState = {
   status: "",
   totalResults: 0,
@@ -37,14 +40,25 @@ export const itNewsSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(thankaddItNews.pending, (state) => {
+    builder.addCase(thankgetfinNews.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(thankaddItNews.fulfilled, (state, actions) => {
+    builder.addCase(thankgetfinNews.fulfilled, (state, actions) => {
       state.articles = [...actions.payload];
       state.loading = false;
     });
-    builder.addCase(thankaddItNews.rejected, (state) => {
+    builder.addCase(thankgetfinNews.rejected, (state) => {
+      state.error = true;
+      state.loading = false;
+    });
+    builder.addCase(thankgetAllNews.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(thankgetAllNews.fulfilled, (state, actions) => {
+      state.articles = [...actions.payload];
+      state.loading = false;
+    });
+    builder.addCase(thankgetAllNews.rejected, (state) => {
       state.error = true;
       state.loading = false;
     });
@@ -59,22 +73,33 @@ export const itNewsSlice = createSlice({
       state.error = true;
       state.loading = false;
     });
+     builder.addCase(thankgetOneNews.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(thankgetOneNews.fulfilled, (state, actions) => {
+      state.articles = [...actions.payload];
+      state.loading = false;
+    });
+    builder.addCase(thankgetOneNews.rejected, (state) => {
+      state.error = true;
+      state.loading = false;
+    });
   },
 });
 
 export const { addItNewsState } = itNewsSlice.actions;
 
-export const thankaddItNews = createAsyncThunk<INews[]>(
-  "itnews/thankgetItNews",
+export const thankgetfinNews = createAsyncThunk<INews[]>(
+  "itnews/thankgetfinNews",
   async () => {
     try {
       const respons = await getStockMarketNews();
-      const objnews = respons.data.sitenews.data.map((e: INews[], i: number) => {
+      const objnews = respons.data.sitenews.data.map((e: INews[]) => {
           return {
             id: e[0],
-            title: e[2],
-            cover: collection_of_pictures[Math.floor(Math.random() * 25)],
-            publication_date: e[3],
+            titleNews: e[2],
+            coverNews: collection_of_pictures[Math.floor(Math.random() * 25)],
+            dateNews: e[3],
           };
         }
       );
@@ -90,18 +115,42 @@ export const thankgetTheArticle = createAsyncThunk<INews[], number>(
   async (id) => {
     try {
       const respons = await getTheArticle(id);
-      console.log(respons.data.content.data);
-      const objnews = respons.data.content.data.map((e: INews[], i: number) => {
+      const objnews = respons.data.content.data.map((e: INews[]) => {
           return {
             id: e[0],
-            title: e[1],
-            news_text: e[3],
-            cover: collection_of_pictures[Math.floor(Math.random() * 6)],
-            publication_date: e[2],
+            titleNews: e[1],
+            newsText: e[3],
+            coverNews: collection_of_pictures[Math.floor(Math.random() * 25)],
+            dateNews: e[2],
+            soureNews: "Московская биржа"
           };
         }
-      );
+      ); 
       return objnews;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const thankgetAllNews = createAsyncThunk<INews[]>(
+  "itnews/thankgetAllNews",
+   async () => {
+    try {
+        const respons = await getAllNews();
+        return respons.data
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const thankgetOneNews = createAsyncThunk<INews[], number>(
+  "itnews/thankgetOneNews",
+  async (id) => {
+    try {
+      const respons = await getOneNews(id);
+      return respons.data;
     } catch (e) {
       console.log(e);
     }

@@ -4,11 +4,14 @@ import { getShares } from "../../Api/ServerRequests";
 import { collection_of_logo } from "../../Company `s logo/LogoCompany`s";
 
 interface IParticipant {
-  id: number;
-  priceСhange: number;
+  id: string;
+  priceChange: number;
   percentageChangeInPrice: number;
   price: number;
   logo: string;
+  ticet: string;
+  shortname: string;
+  lotsize: number
 }
 
 interface IinitialState {
@@ -62,16 +65,27 @@ export const thankaddShares = createAsyncThunk(
           if (key === String(e[0])) {
             logo = value;
           }
-        }
-        return {
+        } 
+          return {
           id: e[0],
-          price: e[1],
-          priceСhange: e[3],
-          percentageChangeInPrice: e[2],
+          price: e[12], 
+          priceChange: e[40],
+          percentageChangeInPrice: e[25],
           logo,
         };
       });
-      return objnews;
+      const objnews2 = respons.data.securities.data.map((e: IParticipant[]) => {
+        for(let i = 0; i <= objnews.length; i++){
+          if(objnews[i].id === e[0]){
+             return Object.assign(objnews[i], {
+          id: e[0],
+          shortname: e[2],
+          lotsize: e[4],
+        });
+        }
+      } 
+      });  
+      return objnews2
     } catch (e) {
       console.log(e);
     }

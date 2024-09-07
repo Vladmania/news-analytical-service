@@ -1,11 +1,117 @@
-import YNDX from './YNDX.png'
-import ABIO from './ABIO.png'
-import ABRD from './ABRD.png'
-import DELI from './DELI.png'
+import YNDX from './logo/YNDX.png'
+import ABIO from './logo/ABIO.png'
+import ABRD from './logo/ABRD.png'
+import DELI from './logo/DELI.png'
+import AFKS from './logo/AFKS.png'
+import AFLT from './logo/AFLT.png'
+import AKRN from './logo/AKRN.png'
+import ALRS from './logo/ALRS.png'
+import AGRO from './logo/RU_AGRO.png'
+import SBER from './logo/SBER.png'
+import CHMF from './logo/CHMF.png'
+import GAZP from './logo/GAZP.png'
+import GMKN from './logo/GMKN.png'
+import LKOH from './logo/LKOH.png'
+import MGNT from './logo/MGNT.png'
+import MOEX from './logo/MOEX.png'
+import MTLR from './logo/MTLR.png'
+import MTSS from './logo/MTSS.png'
+import NLMK from './logo/NLMK.png'
+import NVTK from './logo/NVTK.png'
+import OZON from './logo/OZON.png'
+import PLZL from './logo/PLZL.png'
+import ROSN from './logo/ROSN.png'
+import SNGS from './logo/SNGSP.png'
+import TATN from './logo/TATN.png'
+import TCSG from './logo/TCSG.png'
+import TRNFP from './logo/TRNFP.png'
+import VTBR from './logo/VTBR.png'
+import BANEP from './logo/BANEP.png'
+import BSPB from './logo/BSPB.png'
+import EUTR from './logo/EUTR.png'
+import MAGN from './logo/MAGN.png'
+import PIKK from './logo/PIKK.png'
+import POSI from './logo/POSI.png'
+import RNFT from './logo/RNFT.png'
+import SVCB from './logo/SVCB.png'
+import UGLD from './logo/UGLD.png'
+import VKCO from './logo/VKCO.png'
+import ASTR from './logo/ASTR.png'
+import BELU from './logo/BELU.png'
+import CBOM from './logo/CBOM.png'
+import ENPG from './logo/ENPG.png'
+import FEES from './logo/FEES.png'
+import FESH from './logo/FESH.png'
+import FIXP from './logo/FIXP.png'
+import FLOT from './logo/FLOT.png'
+import GLTR from './logo/GLTR.png'
+import GTRK from './logo/GTRK.png'
+import HYDR from './logo/HYDR.png'
+import IRAO from './logo/IRAO.png'
+import IRKT from './logo/IRKT.png'
+import KMAZ from './logo/KMAZ.png'
+import LEAS from './logo/LEAS.png'
+import LSNGP from './logo/LSNGP.png'
+import LSRG from './logo/LSRG.png'
+import MBNK from './logo/MBNK.png'
+import MDMG from './logo/MDMG.png'
+import MSNG from './logo/MSNG.png'
+import MTLRP from './logo/MTLRP.png'
+import MVID from './logo/MVID.png'
+import NMTP from './logo/NMTP.png'
+import PHOR from './logo/PHOR.png'
+import POLY from './logo/POLY.png'
+import PRMD from './logo/PRMD.png'
+import QIWI from './logo/QIWI.png'
+import RASP from './logo/RASP.png'
+import RBCM from './logo/RBCM.png'
+import RTKM from './logo/RTKM.png'
+import RTKMP from './logo/RTKMP.png'
+import RUAL from './logo/RUAL.png'
+import SELG from './logo/SELG.png'
+import SFIN from './logo/SFIN.png'
+import SGZH from './logo/SGZH.png'
+import SMLT from './logo/SMLT.png'
+import SOFL from './logo/SOFL.png'
+import SPBE from './logo/SPBE.png'
+import SVAV from './logo/SVAV.png'
+import TRMK from './logo/TRMK.png'
+import UNAC from './logo/UNAC.png'
+import UPRO from './logo/UPRO.png'
+import UWGN from './logo/UWGN.png'
+import WUSH from './logo/WUSH.png'
+import APRI from './logo/APRI.jpg'
+import AMEZ from './logo/AMEZ.png'
+import APTK from './logo/APTK.png'
+import AQUA from './logo/AQUA.png'
 
 export const collection_of_logo = {
-    "YNDX": YNDX,
-    "ABIO": ABIO,
-    "ABRD": ABRD,
-    "DELI": DELI
+    "YNDX": YNDX,"BANEP": BANEP,"ASTR": ASTR,"APRI": APRI,
+    "ABIO": ABIO,"BSPB": BSPB,"BELU": BELU,"APTK": APTK,
+    "ABRD": ABRD,"GMKN": GMKN,"CBOM": CBOM,"AQUA": AQUA,
+    "DELI": DELI,"EUTR": EUTR,"ENPG": ENPG,
+    "AFKS": AFKS,"MAGN": MAGN,"FEES": FEES,
+    "AFLT": AFLT,"PIKK": PIKK,"FESH": FESH,
+    "AKRN": AKRN,"POSI": POSI,"FIXP": FIXP,
+    "ALRS": ALRS,"RNFT": RNFT,"FLOT": FLOT,
+    "AGRO": AGRO,"VKCO": VKCO,"GLTR": GLTR,
+    "SBER": SBER,"SVCB": SVCB,"QIWI": QIWI,
+    "CHMF": CHMF,"UGLD": UGLD,"RASP": RASP,
+    "GAZP": GAZP,"GTRK": GTRK,"RBCM": RBCM,
+    "LKOH": LKOH,"HYDR": HYDR,"RTKM": RTKM,
+    "MGNT": MGNT,"IRAO": IRAO,"RTKMP": RTKMP,
+    "MOEX": MOEX,"IRKT": IRKT,"RUAL": RUAL,
+    "MTLR": MTLR,"KMAZ": KMAZ,"SELG": SELG,
+    "MTSS": MTSS,"LEAS": LEAS,"SFIN": SFIN,
+    "NLMK": NLMK,"LSNGP": LSNGP,"SGZH": SGZH,
+    "NVTK": NVTK,"LSRG": LSRG,"SMLT": SMLT,
+    "OZON": OZON,"MBNK": MBNK,"SOFL": SOFL,
+    "PLZL": PLZL,"MDMG": MDMG,"SPBE": SPBE,
+    "ROSN": ROSN,"MSNG": MSNG,"SVAV": SVAV,
+    "SNGS": SNGS,"MTLRP": MTLRP,"TRMK": TRMK,
+    "SNGSP": SNGS,"MVID": MVID,"UNAC": UNAC,
+    "TATN": TATN,"NMTP": NMTP,"UPRO": UPRO,
+    "TCSG": TCSG,"PHOR": PHOR,"UWGN": UWGN,
+    "TRNFP": TRNFP,"POLY": POLY,"WUSH": WUSH,
+    "VTBR": VTBR,"PRMD": PRMD,"AMEZ": AMEZ,
 }
